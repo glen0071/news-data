@@ -1,0 +1,24 @@
+body {
+  background-color: #b2b2ff;
+}
+
+.container {
+  text-align: center;
+}
+
+.data-query-form {
+  background-color: #ccccff;
+  width: 300px;
+  height: 800px;
+  margin: 0px auto;
+  border-radius: 15%;
+}
+
+.query-form-header {
+  padding-top: 15px;
+}
+
+.query-field {
+  padding: 10px;
+  margin: 10px;
+}
