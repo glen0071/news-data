@@ -1,0 +1,9 @@
+<h1>Past Queries</h1>
+
+<% @queries.each do |query| %>
+
+  <li><%= query.search_terms %></li>
+
+<% end %>
+
+<%= link_to("Search", new_query_path) %>

@@ -30,7 +30,6 @@ class Response < ActiveRecord::Base
       @page += 1
       @new_length = new_response.length
       @articles += new_response.length
-
     end
 
     @articles

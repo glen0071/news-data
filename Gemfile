@@ -42,3 +42,4 @@ group :development do
 end
 
 gem 'httparty'
+gem 'd3-rails'
