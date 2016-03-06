@@ -27,7 +27,8 @@ class QueriesController < ApplicationController
         @response.save
       end
     end
-
+    @query.response_id = @response.id
+    @query.save
     @articles = @response.articles
     render 'show'
   end

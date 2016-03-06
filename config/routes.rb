@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :queries
+  resources :queries do
+    resources :responses 
+  end
 
   root "queries#index"
 

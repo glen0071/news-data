@@ -3,7 +3,13 @@
 <% @queries.each do |query| %>
 
   <li><%= query.search_terms %></li>
-
+  <li><%= link_to "<%= query.search_terms %>", path, class: "btn btn-primary" %> </li>
 <% end %>
 
+
+
 <%= link_to("Search", new_query_path) %>
+
+<div id="hook">
+  Here is a div
+</div>
