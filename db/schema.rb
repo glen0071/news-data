@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306155841) do
+ActiveRecord::Schema.define(version: 20160306174620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160306155841) do
     t.integer  "response_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.date     "pub_date"
   end
 
   add_index "articles", ["response_id"], name: "index_articles_on_response_id", using: :btree
@@ -42,10 +43,10 @@ ActiveRecord::Schema.define(version: 20160306155841) do
   create_table "responses", force: :cascade do |t|
     t.string   "search_terms"
     t.string   "query_url"
-    t.integer  "docs_length"
+    t.integer  "articles_amount"
     t.integer  "query_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "responses", ["query_id"], name: "index_responses_on_query_id", using: :btree

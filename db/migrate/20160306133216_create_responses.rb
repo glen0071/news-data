@@ -3,7 +3,7 @@ class CreateResponses < ActiveRecord::Migration
     create_table :responses do |t|
       t.string :search_terms
       t.string :query_url
-      t.integer :docs_length
+      t.integer :articles_amount
       t.references :query, index: true, foreign_key: true
 
       t.timestamps null: false
