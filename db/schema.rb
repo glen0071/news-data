@@ -11,9 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160306134528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "queries", force: :cascade do |t|
+    t.string   "search_terms"
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "response_id"
+  end
+
+  add_index "queries", ["response_id"], name: "index_queries_on_response_id", using: :btree
+
+  create_table "responses", force: :cascade do |t|
+    t.string   "search_terms"
+    t.string   "query_url"
+    t.integer  "docs_length"
+    t.integer  "query_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "responses", ["query_id"], name: "index_responses_on_query_id", using: :btree
+
+  add_foreign_key "queries", "responses"
+  add_foreign_key "responses", "queries"
 end

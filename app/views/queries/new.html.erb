@@ -1,0 +1,15 @@
+<h1>News Data Search</h1>
+
+<%= form_for @query do |f| %>
+    <h3 class="query-field">New York Times Article Search</h3>
+  <%= f.label :search_terms %>:
+  <%= f.text_field :search_terms, {class: "query-field"} %>
+
+  <%= f.label :begin_date %>:
+  <%= f.date_field :begin_date, {class: "query-field"} %><br />
+
+  <%= f.label :end_date %>:
+  <%= f.date_field :end_date, {class: "query-field"} %><br />
+
+  <%= f.submit %>
+<% end %>
