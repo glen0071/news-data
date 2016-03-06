@@ -6,10 +6,10 @@
 <%= @response.search_terms  %>
 
 
-<ul>
+<ol>
   <% @response.articles.each do |article| %>
     <li> <a href="<%= article.url %>"><%= article.headline %></a> <%= article.pub_date.strftime("%B %d, %Y") %> </li>
   <% end  %>
-</ul>
+</ol>
 
 <%= link_to("Another search", new_query_path) %>
