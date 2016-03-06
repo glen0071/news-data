@@ -11,27 +11,26 @@ class QueriesController < ApplicationController
   end
 
   def create
-    base_url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?"
-    begining = query_params[:begin_date].gsub(/-/, '')
-    ending = query_params[:end_date].gsub(/-/, '')
+    @query = Query.new(query_params)
+    if @query.save
+      base_url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?"
+      begining = query_params[:begin_date].gsub(/-/, '')
+      ending = query_params[:end_date].gsub(/-/, '')
 
-    query_url = "#{base_url}q=#{query_params[:search_terms]}&begin_date=#{begining}&end_date=#{ending}&page=0&api-key=#{ENV['NYT_ARTICLE_SEARCH_KEY']}"
+      query_url = "#{base_url}q=#{query_params[:search_terms]}&begin_date=#{begining}&end_date=#{ending}&page=0&api-key=#{ENV['NYT_ARTICLE_SEARCH_KEY']}"
 
-
-    @response = Response.new(query_url)
-    @response.getArticles
-
-    # query_url
-    # # @response = HTTParty.get("http://rubygems.org/api/v1/versions/httparty.json")
-    # @web_urls = []
-    # HTTParty.get(query_url)["response"]["docs"].each {|article|
-    #   @web_urls << article['web_url']
-    # }
+      @response = Response.new(search_terms: query_params[:search_terms], query_url: query_url, docs_length: 0, query_id: @query.id)
+      p "*" * 100
+      p @response
+      if @response.save
+        @response.query_id = @query.id
+        @response.docs_length = @response.getArticles(query_url, @response.id)
+        @response.save
+      end
+    end
 
     render 'show'
   end
-
-# HTTParty::Response
 
   private
     def query_params
