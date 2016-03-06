@@ -21,9 +21,12 @@ class QueriesController < ApplicationController
     @response = Response.new(query_url)
     @response.getArticles
 
-    query_url
-    # @response = HTTParty.get("http://rubygems.org/api/v1/versions/httparty.json")
-    @length = HTTParty.get(query_url)["response"]["docs"].length
+    # query_url
+    # # @response = HTTParty.get("http://rubygems.org/api/v1/versions/httparty.json")
+    # @web_urls = []
+    # HTTParty.get(query_url)["response"]["docs"].each {|article|
+    #   @web_urls << article['web_url']
+    # }
 
     render 'show'
   end
