@@ -3,10 +3,12 @@
 <%= @response.search_terms %>
 
 <ol>
-  <% @response.articles.each do |article| %>
-    <li>
-      <%= article.headline %> <%= article.pub_date.strftime("%B %d, %Y") %>
-    </li>
-
+  <% @grouped_articles.keys.sort.each do |month| %>
+    <h3>
+      <%= month.strftime("%B") %>
+    </h3>
+      <%  for article in @grouped_articles[month]  %>
+        <li><%= article.headline  %></li>
+      <% end %>
   <% end %>
 </ol>

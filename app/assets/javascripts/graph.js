@@ -11,8 +11,8 @@ var articles = [
 
 var hook = d3.select('#hook');
 var div = hook.append("div");
-div.html("Hello, world!").style("background-color", "white");
-hook.style("background-color", "white");
+
+
 
 
 });

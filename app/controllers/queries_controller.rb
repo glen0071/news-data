@@ -29,7 +29,7 @@ class QueriesController < ApplicationController
     end
     @query.response_id = @response.id
     @query.save
-    @articles = @response.articles
+    @articles = @response.articles.order(:pub_date)
     render 'show'
   end
 
