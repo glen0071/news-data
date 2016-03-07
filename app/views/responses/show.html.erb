@@ -1,0 +1,12 @@
+<h1>Query and Response</h1>
+
+<%= @response.search_terms %>
+
+<ol>
+  <% @response.articles.each do |article| %>
+    <li>
+      <%= article.headline %> <%= article.pub_date.strftime("%B %d, %Y") %>
+    </li>
+
+  <% end %>
+</ol>

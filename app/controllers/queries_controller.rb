@@ -3,7 +3,7 @@ class QueriesController < ApplicationController
   require 'HTTParty'
 
   def index
-    @queries = Query.all
+    @responses = Response.all
 
     render 'index'
   end
