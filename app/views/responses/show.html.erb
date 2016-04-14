@@ -5,7 +5,7 @@
 <ol>
   <% @grouped_articles.keys.sort.each do |month| %>
     <h3>
-      <%= month.strftime("%B") %>
+      <%= month.strftime("%B %Y") %>
     </h3>
       <%  for article in @grouped_articles[month]  %>
         <li><%= article.headline  %></li>
