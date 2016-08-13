@@ -20,7 +20,9 @@ class QueriesController < ApplicationController
       ending = query_params[:end_date].gsub(/-/, '')
       words = query_params[:search_terms].gsub(/\s/, '+')
       query_url = "#{base_url}q=#{words}&begin_date=#{begining}&end_date=#{ending}&page=0&api-key=#{ENV['NYT_ARTICLE_SEARCH_KEY']}"
+      binding.pry
       @response = Response.new(search_terms: query_params[:search_terms], query_url: query_url, articles_amount: 0, query_id: @query.id)
+      # logic for if @response['meta']['hits'] > 1000 need to modify range so pages does not exceed 100
       if @response.save
         @response.query_id = @query.id
         @response.articles_amount = @response.getArticles(query_url, @response.id)
